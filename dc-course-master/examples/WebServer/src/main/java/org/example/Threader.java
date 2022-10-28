@@ -11,6 +11,7 @@ public class Threader extends Thread {
     private Socket socket;
     public ThreaderQueue<BufferedReader> queue;
 
+
     public Threader(int id, Socket socket, ThreaderQueue<BufferedReader> queue) {
         this.id = id;
         this.socket = socket;
@@ -20,7 +21,6 @@ public class Threader extends Thread {
     @Override
     public void run() {
         try {
-            // Get request
             while (true) {
                 BufferedReader input = queue.pop_element();
                 if(input == null) return;
@@ -31,7 +31,7 @@ public class Threader extends Thread {
                 proc.process();
                 long endTime = System.nanoTime();
                 System.out.println("---------------------------------------");
-                System.out.println("Thread " + id + " worked: " + ((float) (endTime - startTime) / 1000000000) + " second with request "+request);
+                System.out.println("Hello I am worker # " + id + ((float) (endTime - startTime) / 1000000000) + " second with request "+request);
                 System.out.println("---------------------------------------");
             }
         } catch (IOException | InterruptedException ex) {
