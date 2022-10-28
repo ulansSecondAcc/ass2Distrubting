@@ -32,6 +32,7 @@ public class Threader extends Thread {
                 long endTime = System.nanoTime();
                 System.out.println("---------------------------------------");
                 System.out.println("Hello I am worker # " + id + ((float) (endTime - startTime) / 1000000000) + " second with request "+request);
+                System.out.println("Thread " + id + " worked: " + ((float) (endTime - startTime) / 1000000000) + " second with request "+request);
                 System.out.println("---------------------------------------");
             }
         } catch (IOException | InterruptedException ex) {
